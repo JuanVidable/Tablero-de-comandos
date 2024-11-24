@@ -64,15 +64,23 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     @Override
     @Transactional
     public boolean delete(ID id) throws Exception {
-        try{
-            if(baseRepository.existsById(id)){
-                baseRepository.deleteById(id);
-                return true;
+        try {
+            Optional<E> entityOptional = baseRepository.findById(id);
+
+            if (entityOptional.isPresent()) {
+                E entity = entityOptional.get();
+                if (entity instanceof Base) {
+                    ((Base) entity).setEliminado(true);
+                    baseRepository.save(entity);
+                    return true;
+                } else {
+                    throw new Exception("La entidad no soporta eliminación lógica.");
+                }
             } else {
-                throw new Exception();
+                throw new Exception("Entidad no encontrada.");
             }
-        } catch(Exception e) {
-            throw new Exception(e.getMessage());
+        } catch (Exception e) {
+            throw new Exception("Error al eliminar lógicamente la entidad: " + e.getMessage());
         }
     }
 }

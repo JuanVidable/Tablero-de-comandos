@@ -4,14 +4,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Data;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @MappedSuperclass
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@ToString
+@Setter
+@SuperBuilder
 public class Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Builder.Default
     private boolean eliminado = false;
 }

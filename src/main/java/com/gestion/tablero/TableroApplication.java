@@ -1,9 +1,9 @@
 package com.gestion.tablero;
 
-import com.gestion.tablero.entities.CentroDeCosto;
-import com.gestion.tablero.entities.GastoProyecto;
+import com.gestion.tablero.domain.entities.CentroDeCosto;
+import com.gestion.tablero.domain.entities.GastoCdC;
+import com.gestion.tablero.domain.enums.TipoTransaccion;
 import com.gestion.tablero.repositories.*;
-import com.gestion.tablero.services.ProyectoService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -35,7 +35,7 @@ public class TableroApplication {
 	@Bean
 	@Transactional
 	CommandLineRunner init(CentroDeCostoRepository centroDeCostoRepository,
-						   GastoCdCRepository gastoRepository,
+						   GastoCdCRepository gastoCdCRepository,
 						   GastoOficinaRepository gastoOficinaRepository,
 						   GastoProyectoRepository gastoProyecto,
 						   OficinaRepository oficinaRepository,
@@ -50,8 +50,11 @@ public class TableroApplication {
 
 			//Repetir con Oficina y Proyecto
 
-			CentroDeCosto centroDeCosto1 = CentroDeCosto.builder().nombre("771").build();
+			CentroDeCosto centroDeCosto1 = CentroDeCosto.builder().nombre("771").IngresoAcumulado(5000000).EgresoAcumulado(5000000).IngresoMensual(25000).build();
 			centroDeCostoRepository.save(centroDeCosto1);
+
+			GastoCdC gastoCdC1 = GastoCdC.builder().fecha("2022-01-01").tipo(TipoTransaccion.INGRESO).monto(50000).descripcion("Ingreso inicial").centroDeCosto(centroDeCosto1).build();
+			gastoCdCRepository.save(gastoCdC1);
 		};
 	}
 }

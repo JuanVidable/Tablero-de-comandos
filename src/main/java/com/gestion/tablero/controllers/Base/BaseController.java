@@ -1,6 +1,6 @@
 package com.gestion.tablero.controllers.Base;
 
-import com.gestion.tablero.entities.Base;
+import com.gestion.tablero.domain.entities.Base;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

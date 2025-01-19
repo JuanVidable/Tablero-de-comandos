@@ -1,6 +1,6 @@
 package com.gestion.tablero.repositories;
 
-import com.gestion.tablero.entities.GastoProyecto;
+import com.gestion.tablero.domain.entities.GastoProyecto;
 import org.springframework.stereotype.Repository;
 
 @Repository

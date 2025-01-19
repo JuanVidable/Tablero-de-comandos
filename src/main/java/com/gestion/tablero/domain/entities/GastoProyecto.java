@@ -1,4 +1,4 @@
-package com.gestion.tablero.entities;
+package com.gestion.tablero.domain.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -9,21 +9,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-public class GastoCdC extends Base{
-    private String fecha;
-    private String tipo;
-    private float monto;
+public class GastoProyecto extends Base{
     private String descripcion;
+    private float monto;
+    private String fecha;
 
     @ManyToOne
-    @JoinColumn(name="fk_centersDeCosto")
-    private CentroDeCosto centroDeCosto;
+    @JoinColumn(name="fk_proyecto")
+    private Proyecto proyecto;
 }

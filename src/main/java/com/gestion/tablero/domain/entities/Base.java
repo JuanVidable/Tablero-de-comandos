@@ -1,4 +1,4 @@
-package com.gestion.tablero.entities;
+package com.gestion.tablero.domain.entities;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,6 +1,6 @@
 package com.gestion.tablero.services.Impl;
 
-import com.gestion.tablero.entities.Proyecto;
+import com.gestion.tablero.domain.entities.Proyecto;
 import com.gestion.tablero.repositories.BaseRepository;
 import com.gestion.tablero.services.Base.BaseServiceImpl;
 import com.gestion.tablero.services.ProyectoService;

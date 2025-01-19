@@ -1,6 +1,6 @@
 package com.gestion.tablero.services.Base;
 
-import com.gestion.tablero.entities.Base;
+import com.gestion.tablero.domain.entities.Base;
 
 import java.io.Serializable;
 import java.util.List;

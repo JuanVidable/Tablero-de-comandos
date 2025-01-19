@@ -1,9 +1,7 @@
-package com.gestion.tablero.entities;
+package com.gestion.tablero.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.gestion.tablero.domain.enums.TipoTransaccion;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +15,10 @@ import lombok.Setter;
 @Table
 public class GastoOficina extends Base{
     private String fecha;
-    private String tipo;
+
+    @Enumerated(EnumType.STRING)
+    private TipoTransaccion tipo;
+
     private float monto;
     private String descripcion;
 

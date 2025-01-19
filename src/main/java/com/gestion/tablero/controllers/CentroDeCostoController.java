@@ -1,7 +1,7 @@
 package com.gestion.tablero.controllers;
 
 import com.gestion.tablero.controllers.Base.BaseControllerImpl;
-import com.gestion.tablero.entities.CentroDeCosto;
+import com.gestion.tablero.domain.entities.CentroDeCosto;
 import com.gestion.tablero.services.Impl.CentroDeCostoServiceImpl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

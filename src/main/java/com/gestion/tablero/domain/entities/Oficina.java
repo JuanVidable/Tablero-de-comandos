@@ -1,4 +1,4 @@
-package com.gestion.tablero.entities;
+package com.gestion.tablero.domain.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -13,10 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-public class Proyecto extends Base{
-
-    private String nombre;
-    private float oficial;
-    private float blue;
-
+public class Oficina extends Base{
+    private float costoInversion;
+    private float costoMensual;
 }

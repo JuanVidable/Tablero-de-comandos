@@ -1,6 +1,6 @@
 package com.gestion.tablero.services.Impl;
 
-import com.gestion.tablero.entities.GastoOficina;
+import com.gestion.tablero.domain.entities.GastoOficina;
 import com.gestion.tablero.repositories.BaseRepository;
 import com.gestion.tablero.services.Base.BaseServiceImpl;
 import com.gestion.tablero.services.GastoOficinaService;

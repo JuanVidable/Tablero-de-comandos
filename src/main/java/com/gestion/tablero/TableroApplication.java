@@ -1,7 +1,6 @@
 package com.gestion.tablero;
 
-import com.gestion.tablero.domain.entities.CentroDeCosto;
-import com.gestion.tablero.domain.entities.GastoCdC;
+import com.gestion.tablero.domain.entities.*;
 import com.gestion.tablero.domain.enums.TipoTransaccion;
 import com.gestion.tablero.repositories.*;
 import jakarta.transaction.Transactional;
@@ -53,8 +52,20 @@ public class TableroApplication {
 			CentroDeCosto centroDeCosto1 = CentroDeCosto.builder().nombre("771").IngresoAcumulado(5000000).EgresoAcumulado(5000000).IngresoMensual(25000).build();
 			centroDeCostoRepository.save(centroDeCosto1);
 
-			GastoCdC gastoCdC1 = GastoCdC.builder().fecha("2022-01-01").tipo(TipoTransaccion.INGRESO).monto(50000).descripcion("Ingreso inicial").centroDeCosto(centroDeCosto1).build();
+			GastoCdC gastoCdC1 = GastoCdC.builder().fecha("05-02-2025").tipo(TipoTransaccion.INGRESO).monto(50000).descripcion("Ingreso inicial").centroDeCosto(centroDeCosto1).build();
 			gastoCdCRepository.save(gastoCdC1);
+
+			Oficina oficina1 = Oficina.builder().costoInversion(50000).costoMensual(5000).build();
+			oficinaRepository.save(oficina1);
+
+			GastoOficina gastoOficina1 = GastoOficina.builder().fecha("05-02-2025").tipo(TipoTransaccion.INGRESO).monto(50000).descripcion("Ingreso inicial").oficina(oficina1).build();
+			gastoOficinaRepository.save(gastoOficina1);
+
+			Proyecto proyecto1 = Proyecto.builder().nombre("Proyecto 1").oficial(50000).blue(5000).build();
+			proyectoRepository.save(proyecto1);
+
+
+
 		};
 	}
 }

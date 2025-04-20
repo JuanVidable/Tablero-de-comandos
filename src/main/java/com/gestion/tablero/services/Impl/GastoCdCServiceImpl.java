@@ -2,6 +2,7 @@ package com.gestion.tablero.services.Impl;
 
 import com.gestion.tablero.domain.entities.CentroDeCosto;
 import com.gestion.tablero.domain.entities.GastoCdC;
+import com.gestion.tablero.domain.enums.TipoTransaccion;
 import com.gestion.tablero.repositories.BaseRepository;
 import com.gestion.tablero.repositories.CentroDeCostoRepository;
 import com.gestion.tablero.repositories.GastoCdCRepository;
@@ -23,6 +24,21 @@ public class GastoCdCServiceImpl extends BaseServiceImpl<GastoCdC, Long> impleme
     }
 
     public GastoCdC registrarGasto(GastoCdC gasto){
-        CentroDeCosto centro = centroDeCostoRepository
+
+        // Buscar Centro de Costo por ID
+        CentroDeCosto centro = centroDeCostoRepository.findById(gasto.getCentroDeCosto().getId()).orElseThrow(() -> new RuntimeException("Centro de Costo no encontrado"));
+
+        // Verifico que sea ingreso o egreso
+        if(gasto.getTipo().equals(TipoTransaccion.INGRESO)){
+            centro.setEgresoAcumulado(gasto.getMonto() + centro.getEgresoAcumulado());
+            centro.setEgresoMensual(gasto.getMonto() + centro.getEgresoMensual());
+        }else if(gasto.getTipo().equals(TipoTransaccion.EGRESO)){
+            centro.setIngresoAcumulado(gasto.getMonto() + centro.getIngresoAcumulado());
+            centro.setIngresoMensual(gasto.getMonto() + centro.getIngresoMensual());
+        }
+
+        centroDeCostoRepository.save(centro);
+        return gastoCdCRepository.save(gasto);
+
     }
 }

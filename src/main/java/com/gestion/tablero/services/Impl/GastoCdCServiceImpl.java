@@ -29,10 +29,10 @@ public class GastoCdCServiceImpl extends BaseServiceImpl<GastoCdC, Long> impleme
         CentroDeCosto centro = centroDeCostoRepository.findById(gasto.getCentroDeCosto().getId()).orElseThrow(() -> new RuntimeException("Centro de Costo no encontrado"));
 
         // Verifico que sea ingreso o egreso
-        if(gasto.getTipo().equals(TipoTransaccion.INGRESO)){
+        if(gasto.getTipo().equals(TipoTransaccion.EGRESO)){
             centro.setEgresoAcumulado(gasto.getMonto() + centro.getEgresoAcumulado());
             centro.setEgresoMensual(gasto.getMonto() + centro.getEgresoMensual());
-        }else if(gasto.getTipo().equals(TipoTransaccion.EGRESO)){
+        }else if(gasto.getTipo().equals(TipoTransaccion.INGRESO)){
             centro.setIngresoAcumulado(gasto.getMonto() + centro.getIngresoAcumulado());
             centro.setIngresoMensual(gasto.getMonto() + centro.getIngresoMensual());
         }

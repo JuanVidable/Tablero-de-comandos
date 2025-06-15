@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
@@ -14,8 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-@SuperBuilder
-public class GastoOficina extends Base{
+public class Operacion extends Base {
     private String fecha;
 
     @Enumerated(EnumType.STRING)
@@ -25,6 +23,11 @@ public class GastoOficina extends Base{
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name="fk_oficina")
+    private Proyecto proyecto;
+
+    @ManyToOne
+    private CentroDeCosto centroDeCosto;
+
+    @ManyToOne
     private Oficina oficina;
 }
